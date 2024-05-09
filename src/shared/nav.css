@@ -1,0 +1,9 @@
+#navbar a.active {
+  background-color: #afdde5;
+  color: #024950;
+}
+
+.menu-horizontal li a {
+  padding: 8px 10px;
+  margin: auto 2px;
+}

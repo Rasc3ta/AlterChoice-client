@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button {
+  font-weight: bold;
+  background-color: #afdde5;
+  border: 3px solid #003135;
+  color: #003135;
+}
+
+.button:hover {
+  font-weight: bold;
+  background-color: #afdde5;
+  border: 3px solid #003135;
+  color: #003135;
+}
+
+.button:active {
+  background-color: #003135;
+  border-color: #003135;
+  color: #afdde5;
+}
