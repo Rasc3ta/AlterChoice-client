@@ -25,7 +25,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-darkBlue px-2">
+    <div className="bg-darkBlue px-2 min-w-[425px]">
       <div
         id="navbar"
         className="navbar max-w-[1280px] mx-auto  text-lightBlue justify-between"
@@ -50,21 +50,23 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box bg-darkBlue w-[250px] font-bold"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box bg-darkBlue w-[250px] font-bold "
             >
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-lg w-[185px]">
+          <a className="btn px-2 btn-ghost text-lg ">
             <img src={logo} className="w-10" /> AlterChoice{" "}
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-bold">{links}</ul>
+          <ul className="menu menu-horizontal px-1 font-bold text-lg">
+            {links}
+          </ul>
         </div>
         <div className="navbar-end gap-1 w-auto">
           <a className="btn button">Log in</a>
-          <a className="btn button">Log out</a>
+          {/* <a className="btn button">Log out</a> */}
         </div>
       </div>
     </div>
