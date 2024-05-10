@@ -5,21 +5,26 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./home/Home.jsx";
 import Login from "./Authentication/Login.jsx";
+import Register from "./Authentication/Register.jsx";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-     children: [
+    children: [
       {
-        path: '/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
-      { 
-        path:'/login',
-        element: <Login></Login>
-      }
-     ]
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
   },
 ]);
 
