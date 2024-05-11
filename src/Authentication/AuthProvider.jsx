@@ -7,10 +7,11 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "./firebase.config";
 
-const authContext = createContext(null);
+export const authContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -18,7 +19,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user?.email);
+    //   console.log(user?.email);
       setUser(user);
       setLoading(false);
     });
@@ -28,24 +29,43 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const register = (email, password) => {
+    setLoading(false);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const login = (email, password) => {
+    setLoading(false);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const googleProvider = new GoogleAuthProvider();
 
   const gmailLogin = () => {
+    setLoading(false);
     return signInWithPopup(auth, googleProvider);
   };
 
   const logout = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
-  const values = [user, register, login, gmailLogin, logout, loading];
+  const updateUser = (name, photoURL) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    });
+  };
+
+  const values = {
+    user,
+    register,
+    login,
+    gmailLogin,
+    logout,
+    updateUser,
+    loading,
+  };
 
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };

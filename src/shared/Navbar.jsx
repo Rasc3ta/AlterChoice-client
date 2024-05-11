@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./nav.css";
+import { useContext } from "react";
+import { authContext } from "../Authentication/AuthProvider";
 
 const Navbar = () => {
+  const { user, logout } = useContext(authContext);
+  // const user = 'hi'
+
   const links = (
     <>
       <li>
@@ -12,13 +17,13 @@ const Navbar = () => {
       <li>
         <NavLink to={"/home"}>Queries</NavLink>
       </li>
-      <li>
+      <li className={!user ? "hidden" : ""}>
         <NavLink to={"/home"}>Recommendations For Me</NavLink>
       </li>
-      <li>
+      <li className={!user ? "hidden" : ""}>
         <NavLink to={"/home"}>My Queries</NavLink>
       </li>
-      <li>
+      <li className={!user ? "hidden" : ""}>
         <NavLink to={"/home"}>My Recommendations</NavLink>
       </li>
     </>
@@ -65,7 +70,20 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-1 w-auto">
-          <a className="btn button">Log in</a>
+          {user ? (
+            <button
+              onClick={() => {
+                logout();
+              }}
+              className="btn button"
+            >
+              Log out
+            </button>
+          ) : (
+            <Link to={"/login"}>
+              <button className="btn button">Log in</button>
+            </Link>
+          )}
           {/* <a className="btn button">Log out</a> */}
         </div>
       </div>

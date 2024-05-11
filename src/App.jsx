@@ -9,7 +9,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="bg-lightBlue min-h-[500px]">
+    <div className=" min-h-[500px]">
       <Navbar></Navbar>
       <Outlet></Outlet>
     </div>

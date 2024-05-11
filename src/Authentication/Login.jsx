@@ -2,9 +2,17 @@ import PropTypes from "prop-types";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdKey } from "react-icons/md";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { authContext } from "./AuthProvider";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const { login, gmailLogin } = useContext(authContext);
+  const navigate = useNavigate();
+
   const googleLogin = (e) => {
     e.preventDefault();
     console.log("goole login");
@@ -12,14 +20,48 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("form ogin");
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+      .then((res) => res.user)
+      .then((user) => {
+        toast(`Logged in as ${user.displayName}`, {
+          position: "top-right",
+          autoClose: 750,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .then(() => {
+        setTimeout(() => {
+          navigate("/");
+        }, 1250);
+      })
+      .catch((e) => {
+        toast.error(`Incorrect user credentials !`, {
+          position: "top-right",
+          autoClose: 750,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
   };
 
   return (
-    <div>
+    <div className=" flex justify-center">
       <form
         onSubmit={handleLogin}
-        className="p-4 flex flex-col gap-3 max-w-[500px] mx-auto"
+        className="flex-1 p-4 border-4 rounded-xl border-darkBlue my-40 mx-10 flex flex-col gap-3 max-w-[500px] "
       >
         <h1 className="text-2xl font-bold text-darkBlue">Login : </h1>
         <label className=" p-3 rounded-xl  flex items-center bg-veryLightBlue border-darkBlue border-4 focus:border-darkBlue gap-2">
@@ -29,6 +71,7 @@ const Login = () => {
             type="email"
             className="placeholder:text-darkBlue grow rounded-lg p-2 bg-veryLightBlue focus:outline-none text-lg text-superDarkBlue"
             placeholder="Email"
+            name="email"
           />
         </label>
         <label className=" p-3 rounded-xl  flex items-center bg-veryLightBlue border-darkBlue border-4 focus:border-darkBlue gap-2">
@@ -38,6 +81,7 @@ const Login = () => {
             type="password"
             className="placeholder:text-darkBlue grow rounded-lg p-2 bg-veryLightBlue focus:outline-none text-lg text-superDarkBlue"
             placeholder="password"
+            name="password"
           />
         </label>
         <div className="p-2 pl-0">
@@ -52,12 +96,23 @@ const Login = () => {
           Log in
         </button>
         <Link to={"/register"}>
-          <p>
+          <p className="text-xl">
             Don&apos;t have an accout ?{" "}
             <span className="font-bold">Register</span>
           </p>
         </Link>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
