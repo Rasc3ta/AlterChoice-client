@@ -19,7 +19,7 @@ const Slides = () => {
           disableOnInteraction: false,
         }}
         pagination={{
-          clickable: false,
+          clickable: true,
         }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}

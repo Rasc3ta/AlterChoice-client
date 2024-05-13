@@ -4,7 +4,6 @@ import { Typewriter } from "react-simple-typewriter";
 const TypeWriterCompo = () => {
   return (
     <div className="App">
-        
       <Typewriter
         words={[
           "Find Your Ideal Fit, Explore Alternatives Today",
@@ -16,7 +15,7 @@ const TypeWriterCompo = () => {
         cursorStyle="|"
         typeSpeed={30}
         deleteSpeed={30}
-        delaySpeed={250}
+        delaySpeed={750}
       />
     </div>
   );

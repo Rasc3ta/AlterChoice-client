@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./nav.css";
 import { useContext } from "react";
@@ -8,6 +8,8 @@ import { authContext } from "../Authentication/AuthProvider";
 const Navbar = () => {
   const { user, logout } = useContext(authContext);
   // const user = 'hi'
+
+  const navigate = useNavigate();
 
   const links = (
     <>
@@ -60,9 +62,14 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn px-2 btn-ghost text-lg ">
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+            className="btn px-2 btn-ghost text-lg "
+          >
             <img src={logo} className="w-10" /> AlterChoice{" "}
-          </a>
+          </button>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-bold text-lg">
