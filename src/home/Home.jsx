@@ -12,12 +12,12 @@ const Home = (props) => {
     <div>
       <div className="my-5 sm:my-10 relative" id="slides">
         <Slides></Slides>
-        <div className="typeWriterText absolute top-[calc(50%-55px)] sm:top-[calc(50%-90px)] left-[calc(50%-185px)] z-[5] text-center w-[370px] ">
-          <img src={logo} className="h-[70px] sm:h-[100px] mx-auto" />
-          <h1 className="text-veryLightBlue text-3xl  sm:text-5xl font-bold">
+        <div className="typeWriterText absolute top-[calc(50%-70px)] sm:top-[calc(50%-90px)] left-[calc(50%-185px)] xl:left-[calc(50%-350px)] z-[5] text-center w-[370px] xl:w-[700px]">
+          <img src={logo} className="h-[70px] sm:h-[100px] lg:h-[150px] xl:h-[200px] mx-auto" />
+          <h1 className="text-veryLightBlue text-3xl  sm:text-5xl lg:text-6xl xl:text-[5rem] font-bold">
             AlterChoice
           </h1>
-          <span className="text-lightBlue ">
+          <span className="text-lightBlue xl:text-3xl">
             <TypeWriterCompo></TypeWriterCompo>
           </span>
         </div>
@@ -25,7 +25,7 @@ const Home = (props) => {
 
       <div
         id="banner"
-        className="bg-[linear-gradient(rgb(0,0,0,.4),rgb(0,0,0,.4)),url('https://i.ibb.co/42FNzWD/banner.jpg')]  mb-5 py-5 "
+        className="bg-[linear-gradient(rgb(0,0,0,.4),rgb(0,0,0,.4)),url('https://i.ibb.co/42FNzWD/banner.jpg')] bg-no-repeat bg-top bg-cover  mb-5 py-5 "
       >
         <h2 className="text-3xl font-bold text-lightBlue  text-center">
           Discover Alternatives for Every Need

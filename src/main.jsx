@@ -7,11 +7,13 @@ import Home from "./home/Home.jsx";
 import Login from "./Authentication/Login.jsx";
 import Register from "./Authentication/Register.jsx";
 import AuthProvider from "./Authentication/AuthProvider.jsx";
+import ErrorPage from "./shared/ErrorPage.jsx";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -26,8 +28,8 @@ const routes = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: '/queries'
-      }
+        path: "/queries",
+      },
     ],
   },
 ]);

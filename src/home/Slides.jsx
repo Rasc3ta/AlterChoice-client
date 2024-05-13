@@ -27,19 +27,19 @@ const Slides = () => {
       >
         <SwiperSlide>
           <img
-            className="mx-auto   w-[90vw] object-cover object-center"
+            className="mx-auto   h-[80vh] object-cover object-center"
             src={"https://i.ibb.co/BPnQKRL/slide1.jpg"}
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="mx-auto   w-[90vw] object-cover object-center"
+            className="mx-auto   h-[80vh] object-cover object-center"
             src={"https://i.ibb.co/WBDxcw2/slide2.jpg"}
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="mx-auto   w-[90vw] object-cover object-center"
+            className="mx-auto   h-[80vh] object-cover object-center"
             src={"https://i.ibb.co/Nx8j9SG/slide3.jpg"}
           />
         </SwiperSlide>
