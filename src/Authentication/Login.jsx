@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdKey } from "react-icons/md";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { authContext } from "./AuthProvider";
 
@@ -10,12 +10,29 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { login, gmailLogin } = useContext(authContext);
+  const { user, login, gmailLogin } = useContext(authContext);
   const navigate = useNavigate();
 
   const googleLogin = (e) => {
     e.preventDefault();
-    console.log("goole login");
+    gmailLogin()
+      .then((res) => {
+        toast(`Logged in as ${res.user.displayName}`, {
+          position: "top-right",
+          autoClose: 750,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+      .then(() => {
+        setTimeout(() => {
+          navigate("/");
+        }, 1250);
+      });
   };
 
   const handleLogin = (e) => {
@@ -57,8 +74,13 @@ const Login = () => {
       });
   };
 
+  if (user) {
+    return <Navigate to={"/"}></Navigate>;
+  }
+
   return (
     <div className=" flex justify-center">
+      {/* {console.log(user?.email)} */}
       <form
         onSubmit={handleLogin}
         className="flex-1 p-4 border-4 rounded-xl border-darkBlue my-40 mx-10 flex flex-col gap-3 max-w-[500px] "

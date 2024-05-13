@@ -30,7 +30,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-darkBlue px-2 min-w-[425px]">
+    <div className="bg-darkBlue min-w-[425px]">
       <div
         id="navbar"
         className="navbar max-w-[1280px] mx-auto  text-lightBlue justify-between"
@@ -55,7 +55,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box bg-darkBlue w-[250px] font-bold "
+              className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow  rounded-box bg-darkBlue w-[250px] font-bold "
             >
               {links}
             </ul>
