@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdKey } from "react-icons/md";
 import { FaGoogle } from "react-icons/fa";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { authContext } from "./AuthProvider";
 
@@ -74,8 +74,11 @@ const Login = () => {
       });
   };
 
+  const {state} = useLocation();
+  // console.log(state)
+
   if (user) {
-    return <Navigate to={"/"}></Navigate>;
+    return <Navigate to={state || "/"}></Navigate>;
   }
 
   return (

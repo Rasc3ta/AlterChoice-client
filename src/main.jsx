@@ -8,6 +8,9 @@ import Login from "./Authentication/Login.jsx";
 import Register from "./Authentication/Register.jsx";
 import AuthProvider from "./Authentication/AuthProvider.jsx";
 import ErrorPage from "./shared/ErrorPage.jsx";
+import MyQueries from "./privateRoutes/MyQueries.jsx";
+import PrivateRoute from "./shared/PrivateRoute.jsx";
+import AddQueries from "./privateRoutes/AddQueries.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -28,7 +31,20 @@ const routes = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/queries",
+        path: "/myQueries",
+        element: (
+          <PrivateRoute>
+            <MyQueries></MyQueries>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/addQueries",
+        element: (
+          <PrivateRoute>
+            <AddQueries></AddQueries>
+          </PrivateRoute>
+        ),
       },
     ],
   },
