@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { authContext } from "../Authentication/AuthProvider";
-import axios from "axios";
+import myAxios from "../../axios.config";
+import Swal from "sweetalert2";
 
 const AddQueries = () => {
   const { user } = useContext(authContext);
@@ -30,16 +31,32 @@ const AddQueries = () => {
       name,
       userImage,
       dateTime,
-      recommendationCount
+      recommendationCount,
     };
 
     // console.log(query);
-    axios.post('/addQuery', query)
+
+    myAxios
+      .post("/addQuery", query)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Query added successfully!",
+            icon: "success",
+          });
+          form.reset();
+        }
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
     <div className="flex flex-col items-center my-5 sm:my-10">
-      <form onSubmit={handleSubmit} className=" my-4 bg-veryLightBlue p-2 rounded-xl sm:p-10">
+      <form
+        onSubmit={handleSubmit}
+        className=" my-4 bg-veryLightBlue p-2 rounded-xl sm:p-10"
+      >
         <h1 className="text-2xl font-bold mb-4">Add Query : </h1>
         <label className="py-3 flex flex-row items-center gap-3 text-superDarkBlue text-lg flex-nowrap w-[400px] sm:w-[500px] font-semibold ">
           Product Name :

@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const { user, login, gmailLogin } = useContext(authContext);
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const googleLogin = (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ const Login = () => {
       })
       .then(() => {
         setTimeout(() => {
-          navigate("/");
+          navigate(state || "/");
         }, 1250);
       });
   };
@@ -57,7 +58,7 @@ const Login = () => {
       })
       .then(() => {
         setTimeout(() => {
-          navigate("/");
+          navigate(state || "/");
         }, 1250);
       })
       .catch((e) => {
@@ -74,7 +75,6 @@ const Login = () => {
       });
   };
 
-  const {state} = useLocation();
   // console.log(state)
 
   if (user) {
