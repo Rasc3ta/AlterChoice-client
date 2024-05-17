@@ -18,7 +18,7 @@ const AddQueries = () => {
     const email = user.email;
     const name = user.displayName;
     const userImage = user.photoURL;
-    const dateTime = new Date();
+    const dateTime = Date.now();
     const recommendationCount = 0;
 
     const query = {
