@@ -56,7 +56,7 @@ const Register = () => {
       });
   };
 
-    if (!user) {
+    if (user) {
       return <Navigate to={"/"}></Navigate>;
     }
 
