@@ -11,6 +11,7 @@ import ErrorPage from "./shared/ErrorPage.jsx";
 import MyQueries from "./privateRoutes/MyQueries.jsx";
 import PrivateRoute from "./shared/PrivateRoute.jsx";
 import AddQueries from "./privateRoutes/AddQueries.jsx";
+import AllQueries from "./Queries/AllQueries.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const routes = createBrowserRouter([
             <AddQueries></AddQueries>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/queries",
+        element: <AllQueries></AllQueries>,
       },
     ],
   },
