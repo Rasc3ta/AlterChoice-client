@@ -52,6 +52,16 @@ const MyQueries = () => {
             </span>
             No queries found. Please add query to find the best alternative .
           </p>
+          <div className="flex items-center justify-center">
+          <button
+            onClick={() => {
+              navigate("/addQueries");
+            }}
+            className="text-xl btn button mt-2"
+          >
+            Add Queries
+          </button>
+        </div>
         </div>
       )}
     </div>

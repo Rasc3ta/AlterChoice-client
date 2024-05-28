@@ -12,6 +12,7 @@ import MyQueries from "./privateRoutes/MyQueries.jsx";
 import PrivateRoute from "./shared/PrivateRoute.jsx";
 import AddQueries from "./privateRoutes/AddQueries.jsx";
 import AllQueries from "./Queries/AllQueries.jsx";
+import UpdateQuery from "./privateRoutes/UpdateQuery.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddQueries></AddQueries>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update/:title",
+        element: (
+          <PrivateRoute>
+            <UpdateQuery></UpdateQuery>
           </PrivateRoute>
         ),
       },

@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate,  } from "react-router-dom";
 import myAxios from "../../axios.config";
+import Swal from "sweetalert2";
 
 const CrudCard = ({ cardData }) => {
+
+    const navigate = useNavigate();
+    
   const {
     productImage,
     queryTile,
@@ -15,12 +19,37 @@ const CrudCard = ({ cardData }) => {
   } = cardData;
 
   const deleteQuery = () => {
-    myAxios.delete(`/deleteQuery?title=${queryTile}`).then((res) => {
-      if (res.data.deletedCount === 1) {
-        window.location.reload();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        myAxios
+          .delete(`/deleteQuery?title=${queryTile}`)
+          .then((res) => {
+            if (res.data.deletedCount === 1) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your query has been deleted.",
+                icon: "success",
+              });
+            }
+          })
+          .then(() => {
+            window.location.reload();
+          });
       }
     });
   };
+
+  const updateQuery = ()=>{
+    navigate(`/update/${queryTile}`)
+  }
 
   const currentDate = new Date(dateTime);
   return (
@@ -54,7 +83,7 @@ const CrudCard = ({ cardData }) => {
           </li>
           <li className="flex flex-wrap items-center justify-center gap-1 my-1 mb-3">
             <button className="button btn">View Details </button>
-            <button className="button btn">Update </button>
+            <button onClick={updateQuery} className="button btn">Update </button>
             <button onClick={deleteQuery} className="button btn">
               Delete
             </button>
