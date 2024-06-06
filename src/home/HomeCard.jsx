@@ -16,7 +16,7 @@ const HomeCard = ({ cardData }) => {
   const currentDate = new Date(dateTime);
   return (
     <div className="w-[300px] border-[1px] border-darkBlue hover:shadow-[0px_0px_10px_rgb(0,0,0,.3)] rounded-xl m-1  text-darkBlue col-span-1 mx-auto">
-      <Link>
+      <Link to={`/queryDetails/${cardData._id}`}>
         <ul className="flex flex-col gap-1  min-h-[500px] justify-between">
           <li className="  py-2 font-bold px-3">{queryTile}</li>
           <li className="border-y border-darkBlue">

@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
-import { Link, useNavigate,  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import myAxios from "../../axios.config";
 import Swal from "sweetalert2";
 
 const CrudCard = ({ cardData }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    
   const {
     productImage,
     queryTile,
@@ -16,7 +15,12 @@ const CrudCard = ({ cardData }) => {
     userImage,
     name,
     brandName,
+    _id,
   } = cardData;
+
+  const goToDetails = () => {
+    navigate(`/queryDetails/${_id}`);
+  };
 
   const deleteQuery = () => {
     Swal.fire({
@@ -47,9 +51,9 @@ const CrudCard = ({ cardData }) => {
     });
   };
 
-  const updateQuery = ()=>{
-    navigate(`/update/${queryTile}`)
-  }
+  const updateQuery = () => {
+    navigate(`/update/${queryTile}`);
+  };
 
   const currentDate = new Date(dateTime);
   return (
@@ -82,8 +86,12 @@ const CrudCard = ({ cardData }) => {
             </span>
           </li>
           <li className="flex flex-wrap items-center justify-center gap-1 my-1 mb-3">
-            <button className="button btn">View Details </button>
-            <button onClick={updateQuery} className="button btn">Update </button>
+            <button onClick={goToDetails} className="button btn">
+              View Details{" "}
+            </button>
+            <button onClick={updateQuery} className="button btn">
+              Update{" "}
+            </button>
             <button onClick={deleteQuery} className="button btn">
               Delete
             </button>
