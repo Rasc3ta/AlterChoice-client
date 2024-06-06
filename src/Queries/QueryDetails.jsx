@@ -67,9 +67,12 @@ const QueryDetails = () => {
       },
     };
 
-    myAxios.post("/postRec", recommendation).then((res) => {
-      console.log(res.data);
-    });
+    myAxios
+      .post("/postRec", recommendation)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e.message));
     // console.log(recommendation);
 
     setTimeout(() => {
