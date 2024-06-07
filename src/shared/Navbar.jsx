@@ -20,7 +20,7 @@ const Navbar = () => {
         <NavLink to={"/queries"}>Queries</NavLink>
       </li>
       <li className={!user ? "hidden" : ""}>
-        <NavLink to={"/home"}>Recommendations For Me</NavLink>
+        <NavLink to={"/recommendationsForMe"}>Recommendations For Me</NavLink>
       </li>
       <li className={!user ? "hidden" : ""}>
         <NavLink to={"/myQueries"}>My Queries</NavLink>

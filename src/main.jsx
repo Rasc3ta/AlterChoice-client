@@ -15,6 +15,7 @@ import AllQueries from "./Queries/AllQueries.jsx";
 import UpdateQuery from "./privateRoutes/UpdateQuery.jsx";
 import QueryDetails from "./Queries/QueryDetails.jsx";
 import MyRecommendations from "./myRecommendations/MyRecommendations.jsx";
+import RecommendationsForMe from "./recommendationsForMe/RecommendationsForMe.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -71,6 +72,14 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyRecommendations></MyRecommendations>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/recommendationsForMe",
+        element: (
+          <PrivateRoute>
+            <RecommendationsForMe></RecommendationsForMe>
           </PrivateRoute>
         ),
       },

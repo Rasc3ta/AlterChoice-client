@@ -1,7 +1,6 @@
-import React from "react";
+
 import PropTypes from "prop-types";
 import myAxios from "../../axios.config";
-import { settings } from "firebase/analytics";
 
 const MyRecommendation = ({ recommendation }) => {
   const handleDelete = () => {

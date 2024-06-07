@@ -6,11 +6,18 @@ import { authContext } from "../Authentication/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const { pathname } = useLocation();
 
-  const { user } = useContext(authContext);
+  const { user, loading } = useContext(authContext);
   // console.log(pathname);
 
-
-
+  if (loading) {
+    return (
+      <div className=" flex items-center justify-center mt-14">
+        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading loading-bars loading-lg"></span>
+      </div>
+    );
+  }
   if (user) {
     return <>{children}</>;
   } else {

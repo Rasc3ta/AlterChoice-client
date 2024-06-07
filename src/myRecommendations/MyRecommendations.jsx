@@ -13,7 +13,7 @@ const MyRecommendations = () => {
     myAxios.get(`/myRecs/${user.email}`).then((res) => {
       const data = res.data;
       setMyRecs(data);
-      console.log(data);
+      // console.log(data);
     });
   }, []);
 
